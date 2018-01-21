@@ -1,0 +1,7 @@
+{
+  "name": "d3tree",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Shawn Presser <shawnpresser@gmail.com>",
+  "license": "MIT"
+}
