@@ -573,7 +573,7 @@ var diagonal = d3.svg.diagonal()
      });
 
 
-((js, f) => f(null, js))(require("../data/paypal.json"), function(error, treeData) {
+  ((js, f) => f(null, js))(treeData, function(error, treeData) {
       root = treeData[0];
       root.x0 = height/3;
       root.y0 = 200;
