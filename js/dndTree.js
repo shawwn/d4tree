@@ -20,9 +20,15 @@ OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 
+  var margin = {top: 0, right: 30, bottom: 20, left: 50},
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom;
+
+
+
 
 // Get JSON data
-treeJSON = d3.json(require("../data/paypal.json"), function(error, treeData) {
+treeJSON = ((js, f) => f(null, js))(require("../data/paypal.json"), function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -70,7 +76,7 @@ treeJSON = d3.json(require("../data/paypal.json"), function(error, treeData) {
     // Call visit function to establish maxLabelLength
     visit(treeData, function(d) {
         totalNodes++;
-        maxLabelLength = Math.max(d.name.length, maxLabelLength);
+        maxLabelLength = Math.max((d.name || '').length, maxLabelLength);
 
     }, function(d) {
         return d.children && d.children.length > 0 ? d.children : null;
@@ -543,3 +549,4 @@ treeJSON = d3.json(require("../data/paypal.json"), function(error, treeData) {
     update(root);
     centerNode(root);
 });
+
